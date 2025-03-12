@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Talex Suppliers Limited</title>
+    <link rel="icon" type="image/png" href="../image/talex.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #031b36;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="../image/talex.png" alt="Talex Logo" class="logo-img"> TALEX SUPPLIERS LIMITED</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1>Our Products</h1>
+        <input type="text" id="searchBar" class="search-bar" placeholder="Search for products..." onkeyup="searchProducts()">
+        <div class="product-grid" id="productGrid">
+            <div class="product">Wooden Climbers</div>
+            <div class="product">Concrete Climbers</div>
+            <div class="product">Safety Belts</div>
+            <div class="product">Auger Bits</div>
+            <div class="product">Bandit Tools</div>
+            <div class="product">Rollers</div>
+            <div class="product">Gloves</div>
+            <div class="product">Pull Lifts</div>
+            <div class="product">Ratchets</div>
+            <div class="product">Car Covers</div>
+            <div class="product">Car Floor Mats</div>
+            <div class="product">Wiper Blades</div>
+        </div>
+    </div>
+    
+    <footer id="footer">
+        <p>&copy; 2025 Talex Suppliers Limited. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/talex_suppliersltd/" target="_blank" style="color: rgb(255, 119, 0);">Instagram</a> |
+            <a href="https://www.tiktok.com/@talexcaraccessories" target="_blank" style="color: rgb(255, 119, 0);">TikTok</a> |
+            <a href="tel:+254722690154" style="color: rgb(255, 119, 0);">0722 690 154</a> |
+            <a href="tel:+254705317188" style="color: rgb(255, 119, 0);">0705 317 188</a> |
+            <a href="tel:+254702840082" style="color: rgb(255, 119, 0);">0702 840 082</a>
+        </div>
+        <p>Email: info@talexsuppliers.com | Location: Kirinyaga Business Center, Shop No. 5, Nairobi | P.O.Box 522-00300</p>
+    </footer>
+    
+    <script>
+        function searchProducts() {
+            let input = document.getElementById("searchBar").value.toLowerCase();
+            let products = document.querySelectorAll(".product");
+            products.forEach(product => {
+                if (product.textContent.toLowerCase().includes(input)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
