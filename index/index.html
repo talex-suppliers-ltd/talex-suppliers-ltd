@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +15,12 @@
                 <img src="../image/talex.png" alt="Talex Logo" class="logo-img">
                 TALEX SUPPLIERS LIMITED
             </div>
+            <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
             <ul class="nav-links">
-                <li><a href="../index/about.html" class="active">Home</a></li>
-                <li><a href="../products/products.html">Products</a></li>
-                <li><a href="./about.html" >About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="active" onclick="closeMenu()">Home</a></li>
+                <li><a href="../products/products.html" onclick="closeMenu()">Products</a></li>
+                <li><a href="./about.html" onclick="closeMenu()">About Us</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -27,26 +29,158 @@
         <div class="slider">
             <button class="prev">&#10094;</button>
             <div class="slider-content">
-                <h1>Welcome to Talex Suppliers Limited</h1>
-                <p>Your one-stop shop for premium car accessories <br>and powerline construction tools</p>
-                <a href="../products/products.html" class="btn">Shop Now</a>
+                <div class="hero-overlay">
+                    <h1>Welcome to Talex Suppliers Limited</h1>
+                    <p>Your one-stop shop for premium car accessories <br>and powerline construction tools</p>
+                    <a href="../products/products.html" class="btn">Shop Now</a>
+                </div>
             </div>
             <button class="next">&#10095;</button>
         </div>
     </section>
 
-    <footer>
+    <footer id="contact">
         <p>&copy; 2025 Talex Suppliers Limited. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.instagram.com/talex_suppliersltd/" target="_blank">Instagram</a> |
             <a href="https://www.tiktok.com/@talexcaraccessories?_t=ZM-8uZ2tflDuSs&_r=1" target="_blank">TikTok</a> |
             <a href="tel:+0722690154">0722690154</a> |
-            <a href="tel:+0702840082">0702840082</a> |
-            <a href="tel:+0705317188">0705317188</a>
+            <a href="tel:+0705317188">0705317188</a> |
+            <a href="tel:+0702840082">0702840082</a>
         </div>
         <p>Email: P.O.Box 522-00300 Nairobi | Location: Kirinyaga Business Center, Shop No. 5</p>
     </footer>
 
     <script src="../js/index.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = [
+                "../image/home1.jpg",
+                "../image/home2.jpg"
+            ];
+            let currentImageIndex = 0;
+
+            function updateBackground() {
+                document.body.style.backgroundImage = `url(${images[currentImageIndex]})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundPosition = "center";
+                document.body.style.backgroundRepeat = "no-repeat";
+                document.body.style.transition = "background-image 1s ease-in-out";
+            }
+
+            function prevSlide() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateBackground();
+            }
+
+            function nextSlide() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateBackground();
+            }
+
+            if (document.querySelector(".prev") && document.querySelector(".next")) {
+                document.querySelector(".prev").addEventListener("click", prevSlide);
+                document.querySelector(".next").addEventListener("click", nextSlide);
+            }
+
+            setInterval(nextSlide, 5000);
+            updateBackground();
+        });
+    </script>
+    <style>
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-content {
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                background-color: #031b36;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+                padding: 10px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: transform 0.5s ease-in-out, opacity 0.5s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 35px;
+                padding: 5px;
+                color: white;
+                cursor: pointer;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-overlay h1 {
+                font-size: 20px;
+            }
+            .hero-overlay p {
+                font-size: 14px;
+            }
+            .btn {
+                padding: 8px 15px;
+            }
+            footer .social-links {
+                display: flex; 
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+        }
+    </style>
 </body>
 </html>

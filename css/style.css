@@ -1,3 +1,39 @@
+@media screen and (max-width: 768px) {
+    .nav-links {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+    
+    .nav-links.active {
+        max-height: 500px; /* Adjust based on content */
+        padding: 10px 0;  
+    }
+    
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    position: fixed; /* Keeps it in place */
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensures it's above other elements */
+    font-size: 35px;
+    padding: 5px;
+}
+
+
+/* Show toggle button on smaller screens */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+}
+
+
 html, body {
     height: 100%;
     margin: 0;
@@ -74,11 +110,19 @@ nav {
 /* Hero Section */
 .hero {
     text-align: center;
-    height: 100vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
 
 /* Slider */
 .slider {
@@ -92,12 +136,11 @@ nav {
 
 .btn {
     display: inline-block;
+    background: rgb(255, 119, 0);
+    color: white;
     padding: 10px 20px;
-    background-color: #fff;
-    color: rgb(255, 119, 0);
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 10px;
 }
 
 /* Slider Buttons */
